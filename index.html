@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Jogo da Velha</h1>
+    <div class="escolha body" id="esco">
+        <h2>Player 1</h2>
+        <h2> Escolha X ou O para jogar</h2>
+        <input type="text" name="escolha" id="escolha">
+        <button id="escolhido">Começar</button>
+        <div class="placar">
+            <section>
+                <span>Player 1</span><span>X</span><span>Player 2</span>
+            </section>
+            <section class="vitorias">
+                <span id="vit-player1"></span><span>X</span><span id="vit-player2"></span>
+            </section>
+            <section class="empates"><span>Empates</span><span id="empates"></span></section>
+        </div>
+    </div>
+
+
+
+    <script src="index.js"></script>
+    <script>
+        const vitPlayer1 = document.getElementById('vit-player1')
+        const vitPlayer2 = document.getElementById('vit-player2')
+        const empates = document.getElementById('empates')
+        const placarJson = 'placar.json'
+        fetch(placarJson)
+            .then(resp => resp.json())
+            .then((dados) => {
+                vitPlayer1.innerHTML = dados.vitoriasPlayer1
+                vitPlayer2.innerHTML = dados.vitoriasPlayer2
+                empates.innerHTML = dados.empates
+            })
+    </script>
+</body>
+
+</html>
