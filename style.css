@@ -1,6 +1,6 @@
 body {
-    background-color: #444;
-    color: #fff;
+    background-color: rgb(82, 82, 82);
+    color: rgb(255, 255, 255);
 }
 
 .body {
@@ -40,6 +40,8 @@ h1 {
 .placar {
     font-size: 25px;
     margin-top: 30px;
+    border: solid 1px rgb(255, 253, 253);
+    box-shadow: 5px 1px 12px black;
 }
 
 .placar span {
@@ -53,4 +55,16 @@ h1 {
 
 .empates {
     margin-left: 45px;
+}
+
+button {
+    border-radius: 8px;
+    color: rgb(12, 0, 39);
+    background-color: #fff;
+    box-shadow: 5px 1px 12px black;
+}
+
+input {
+    border-radius: 5px;
+    box-shadow: 2px 1px 5px black;
 }

@@ -54,6 +54,7 @@ class JogoDaVelha {
             c.addEventListener('click', () => {
                 if (this.jogada(i, this.playerVez[0], this.playerVez[1])) {
                     c.setAttribute('value', this.playerVez[0])
+                    c.style.backgroundColor = 'rgb(240, 240, 240)'
                     this.playerVez[1] = true
                 }
             })
@@ -133,7 +134,7 @@ class JogoDaVelha {
 
     mudarVezJogador() {
         const botaoProximo = document.getElementById('botaoProximo')
-        const divJogadorDaVez = document.createElement('div')
+        const divJogadorDaVez = document.createElement('h1')
         const divBody = document.getElementById('body')
         divBody.insertAdjacentElement('afterbegin', divJogadorDaVez)
 

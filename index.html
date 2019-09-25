@@ -22,23 +22,45 @@
             </section>
             <section class="empates"><span>Empates</span><span id="empates"></span></section>
         </div>
+        <button id="zerar">Zerar Placar</button>
     </div>
 
 
 
     <script src="index.js"></script>
     <script>
-        const vitPlayer1 = document.getElementById('vit-player1')
-        const vitPlayer2 = document.getElementById('vit-player2')
-        const empates = document.getElementById('empates')
-        const placarJson = 'placar.json'
-        fetch(placarJson)
-            .then(resp => resp.json())
-            .then((dados) => {
-                vitPlayer1.innerHTML = dados.vitoriasPlayer1
-                vitPlayer2.innerHTML = dados.vitoriasPlayer2
-                empates.innerHTML = dados.empates
+        function gerarPlacar(url) {
+            const vitPlayer1 = document.getElementById('vit-player1')
+            const vitPlayer2 = document.getElementById('vit-player2')
+            const empates = document.getElementById('empates')
+            fetch(url)
+                .then(resp => resp.json())
+                .then((dados) => {
+                    vitPlayer1.innerHTML = dados.vitoriasPlayer1
+                    vitPlayer2.innerHTML = dados.vitoriasPlayer2
+                    empates.innerHTML = dados.empates
+                })
+        }
+
+        function zerarPlacar(url) {
+            const fs = require('fs')
+            const placarZerado = {
+                vitoriasPlayer1: 0,
+                vitoriasPlayer2: 0,
+                empates: 0
+            }
+            const placarZeradoJson = JSON.stringify(placarZerado, null, '\t')
+            fs.writeFile('placar.json', placarZeradoJson, (err) => {
+                if (err) return console.error(err)
             })
+        }
+
+        gerarPlacar('placar.json')
+        const botaoZerar = document.getElementById('zerar')
+        botaoZerar.addEventListener('click', () => {
+            zerarPlacar('placar.json')
+            window.location.reload()
+        })
     </script>
 </body>
 
